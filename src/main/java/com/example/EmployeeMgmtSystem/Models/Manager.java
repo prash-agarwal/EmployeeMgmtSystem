@@ -46,13 +46,13 @@ public class Manager {
 
 	public List<Employee> getEmp() {
 		return emp;
-	}
+	}								
 
 	public void setEmp(List<Employee> emp) {
 		this.emp = emp;
 	}
 
-	@OneToMany(mappedBy="manager")			  
+	@OneToMany(mappedBy="manager") 			  
 	List<Employee> emp;  //if we don't declare here List of Emlpoyees when we are using 
 	//@OneToMany annotation, then table won't get created in db
 }

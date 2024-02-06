@@ -41,10 +41,10 @@ public class Employee {
 	}
 
 	public void setManager(Manager manager) {
-		this.manager = manager;
+		this.manager = manager;		
 	}
 
-	@Id
+	@Id									
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public 
 	int empId;

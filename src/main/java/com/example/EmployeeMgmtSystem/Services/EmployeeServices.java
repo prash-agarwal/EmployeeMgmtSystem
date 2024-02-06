@@ -23,6 +23,8 @@ public class EmployeeServices {
 		//we will have to create a object of class whose column is passed as foreign key in the
 		//other class. For example here we are creating object of Manager class and passing
 		//managerId from emp JSON object.
+		//We are extracting manager object from emp object by passing the managerId in 
+		//ManagerService Class.
 		Manager manager = managerService.createOrGetManager(emp);
 
 	    // Set the manager for the employee
