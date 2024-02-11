@@ -10,7 +10,6 @@ import jakarta.persistence.OneToMany;
 	
 @Entity
 public class Manager {
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	public int managerId;

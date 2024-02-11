@@ -17,9 +17,9 @@ public class ManagerServices {
 	}
 
 	public Manager createOrGetManager(Employee emp) {
-		
+		//Here we are not saving the details of manager in manager table.
+		//Here we are trying to find the details of manager in manager table.
 		return managerRepo.findById(emp.getManager().getManagerId()).orElse(null);
 		//In above code if we don't place this ".orElse(null)", then it will give error.
 	}
-		
 }
