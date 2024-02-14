@@ -1,5 +1,7 @@
 package com.example.EmployeeMgmtSystem.Controllers;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,5 +17,10 @@ public class EmployeeController {
 	@PostMapping("/createEmployee")
 	public void createEmployee(@RequestBody Employee emp) {
 		empService.createEmployee(emp);
+	}
+	
+	@GetMapping("/getEmployees")
+	public List<Employee> getEmployees(){
+		return empService.getEmployees();
 	}
 }

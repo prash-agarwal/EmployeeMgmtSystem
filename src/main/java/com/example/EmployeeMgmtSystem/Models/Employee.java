@@ -49,15 +49,14 @@ public class Employee {
 	public 
 	int empId;
 	
-//	@NotNull
+	//@NotNull
 	public String empName;
 	
 	//@NotNull
 	@Column(name="designation")
 	public String empDesign;
 	
-	@ManyToOne		//when we define only just @ManyToOne, then primary key of Manager class
-	//gets added as foreign key in Employee Class
+	@ManyToOne		
 	@JoinColumn
 	Manager manager;  //managerId will be added as foreign key.
 }

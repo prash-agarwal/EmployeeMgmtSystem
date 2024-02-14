@@ -1,4 +1,6 @@
 package com.example.EmployeeMgmtSystem.Services;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,27 @@ public class ManagerServices {
 	ManagerRepo managerRepo;
 
 	public void createEmployee(Manager manager) {
-		managerRepo.save(manager);
+		managerRepo.save(manager);	
 	}
 
-	public Manager createOrGetManager(Employee emp) {
-		//Here we are not saving the details of manager in manager table.
-		//Here we are trying to find the details of manager in manager table.
-		return managerRepo.findById(emp.getManager().getManagerId()).orElse(null);
+	public void insertManager(Employee emp) {
+	
+		Manager manager=emp.getManager();
+		managerRepo.save(manager);
+	}
+	
+	public Manager insertOrGetManager(Employee emp) {
+		
+		Manager manager=managerRepo.findById(emp.getManager().getManagerId()).orElse(null);
 		//In above code if we don't place this ".orElse(null)", then it will give error.
+		
+		if(manager==null)
+			managerRepo.save(manager);
+		return manager;
+	}
+
+	public List<Manager> getManagers() {
+		
+		return managerRepo.findAll();
 	}
 }

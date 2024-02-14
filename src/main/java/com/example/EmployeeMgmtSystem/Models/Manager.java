@@ -1,6 +1,6 @@
 package com.example.EmployeeMgmtSystem.Models;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,9 +51,13 @@ public class Manager {
 		this.emp = emp;
 	}
 
-	@OneToMany(mappedBy="manager") 			  
+	@OneToMany(mappedBy="manager") 		
+	@JsonIgnoreProperties(value="manager")
 	List<Employee> emp;  //if we don't declare here List of Emlpoyees when we are using 
 	//@OneToMany annotation, then table won't get created in db
+	
+	//From above if we remove JsonIgnoreProperties, then getEmployee in Employee class 
+	//and getManager in Manager class won't work.
 }
 //above mentioned attributes were'nt declared alongwith accessModifier as public and 
 //their values were'nt getting inserted in the Manager table. Kindly check.
