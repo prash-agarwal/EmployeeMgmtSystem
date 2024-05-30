@@ -34,6 +34,11 @@ public class ManagerServices {
 		return manager;
 	}
 
+	public Manager getManager(int id) {
+		Manager manager=managerRepo.findById(id).orElse(null);
+		return manager;
+	}
+	
 	public List<Manager> getManagers() {
 		
 		return managerRepo.findAll();

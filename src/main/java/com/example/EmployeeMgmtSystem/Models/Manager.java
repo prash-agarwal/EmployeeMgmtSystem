@@ -10,6 +10,23 @@ import jakarta.persistence.OneToMany;
 	
 @Entity
 public class Manager {
+	
+	public Manager() {
+		
+	}
+	public Manager(int managerId, String managerName,String managerDesign,List<Employee> emp) {
+		this.managerId=managerId;
+		this.managerName=managerName;
+		this.managerDesign=managerDesign;
+		this.emp=emp;
+	}
+	public Manager(int managerId, String managerName,String managerDesign) {
+		this.managerId=managerId;
+		this.managerName=managerName;
+		this.managerDesign=managerDesign;
+		//this.emp=emp;
+	}
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	public int managerId;
@@ -56,8 +73,30 @@ public class Manager {
 	List<Employee> emp;  //if we don't declare here List of Emlpoyees when we are using 
 	//@OneToMany annotation, then table won't get created in db
 	
+	
+//	The @JsonIgnoreProperties annotation in the context of the @OneToMany relationship 
+//	helps manage the serialization and deserialization of JSON objects, preventing 
+//	issues such as infinite recursion or redundant data.
+	
 	//From above if we remove JsonIgnoreProperties, then getEmployee in Employee class 
 	//and getManager in Manager class won't work.
+	//JSON example
+//	{
+//		  "managerName": "John Doe",
+//		  "managerDesign": "Senior Manager",
+//		  "emp": [
+//		    {
+//		      "empId": 1,
+//		      "empName": "Alice",
+//		      "empDesign": "Developer"
+//		    },
+//		    {
+//		      "empId": 2,
+//		      "empName": "Bob",
+//		      "empDesign": "Tester"
+//		    }
+//		  ]
+//		}
 }
 //above mentioned attributes were'nt declared alongwith accessModifier as public and 
 //their values were'nt getting inserted in the Manager table. Kindly check.

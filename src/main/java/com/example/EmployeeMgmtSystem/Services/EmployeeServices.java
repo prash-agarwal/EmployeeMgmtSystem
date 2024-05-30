@@ -43,7 +43,6 @@ public class EmployeeServices {
 	public List<Employee> getEmployees() {
 		return empRepo.findAll();
 	}
-	
 }
 
 
